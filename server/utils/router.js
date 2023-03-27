@@ -163,6 +163,7 @@ router.delete(
       const result = await upsertTrainer(trainerName, trainer);
       res.status(result["$metadata"].httpStatusCode).send(result);
     }
+    
     catch(err){
       next(err);
     }
