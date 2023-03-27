@@ -154,12 +154,14 @@ router.delete(
       console.log("PokemonIndex" , pokemon1 , pokemon1.name);
       */
       
+      //findIndex関数
       const index = trainer.pokemons.findIndex(
         (pokemon) => String(pokemon.id) === pokemonId
       );
       console.log("PokemonID" , pokemonId , index);
       
       trainer.pokemons.splice(index, 1);
+      
       const result = await upsertTrainer(trainerName, trainer);
       res.status(result["$metadata"].httpStatusCode).send(result);
     }
