@@ -23,6 +23,7 @@ const { dialog, onOpen, onClose } = useDialog();
 <template>
   <div>
     <h1>あたらしくはじめる</h1>
+    <nuxt-link to="/">ポケモンセンターの受付に戻る</nuxt-link>
     <p>では　はじめに　きみの　なまえを　おしえて　もらおう！</p>
     <form @submit.prevent>
       <div class="item">
@@ -53,6 +54,7 @@ const { dialog, onOpen, onClose } = useDialog();
         </GamifyItem>
         <GamifyItem>
           <GamifyButton @click="onSubmit">はい</GamifyButton>
+          <!--  名前被りの場合の条件分岐を記載  -->
         </GamifyItem>
       </GamifyList>
     </GamifyDialog>

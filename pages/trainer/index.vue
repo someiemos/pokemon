@@ -5,6 +5,7 @@ const { data: trainers } = await useTrainers();
 <template>
   <div>
     <h1>つづきからはじめる</h1>
+    <nuxt-link to="/">ポケモンセンター に もどる</nuxt-link>
     <GamifyList>
       <GamifyItem v-for="trainer in trainers" :key="trainer">
         <NuxtLink :to="`/trainer/${trainer}`">{{ trainer }}</NuxtLink>

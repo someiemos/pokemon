@@ -66,6 +66,7 @@ const {
 <template>
   <div>
     <h1>トレーナー情報</h1>
+    <nuxt-link to="/">そら を とぶ</nuxt-link>
     <div class="trainer-info">
       <img src="/avatar.png" />
       <span>{{ trainer.name }}</span>
