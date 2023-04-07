@@ -1,13 +1,3 @@
-<template>
-  <div>
-    <button @click="getRandomPokemon">Get Random Pokemon</button>
-    <div v-if="pokemon">
-      <h2>{{ pokemon.name }}</h2>
-      <img :src="pokemon.image" alt="">
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   data() {
@@ -29,3 +19,16 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div>
+    <h1>ポケモンをつかまえる</h1>
+    <nuxt-link to="./">にげる</nuxt-link>
+    <br>
+    <button @click="getRandomPokemon">ポケモン を さがす</button>
+    <div v-if="pokemon">
+      <h2>{{ pokemon.name }}</h2>
+      <img :src="pokemon.image" alt="">
+    </div>
+  </div>
+</template>
