@@ -71,13 +71,21 @@ const {
       <img src="/avatar.png" />
       <span>{{ trainer.name }}</span>
     </div>
-    <GamifyButton @click="onOpenDelete(true)"
-      >マサラタウンにかえる</GamifyButton
-    >
-    <h2>てもちポケモン</h2>
-    <CatchButton :to="`/trainer/${trainer.name}/catch`"
-      >ポケモンをつかまえる</CatchButton
-    >
+    <GamifyButton @click="onOpenDelete(true)">
+      マサラタウンにかえる
+    </GamifyButton>
+    
+    <br>
+    
+    <CatchButton :to="`/trainer/${trainer.name}/catch`">
+      ポケモンをつかまえる
+    </CatchButton>
+    
+    <CatchButton :to="`/trainer/${trainer.name}/get`">
+      ポケモンをつかまえる(ランダム)
+    </CatchButton>
+    
+    <h2>てもちポケモン</h2>  
     <GamifyList>
       <GamifyItem v-for="pokemon in trainer.pokemons" :key="pokemon.id">
         <img :src="pokemon.sprites.front_default" />

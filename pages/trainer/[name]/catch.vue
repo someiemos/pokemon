@@ -2,6 +2,7 @@
 const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
+
 const page = ref(0); 
 const limit = ref(10);
 const offset = computed(() => page.value * limit.value);
@@ -9,17 +10,22 @@ const { data: pokemons, refresh } = await useFetch(
   () =>
     `https://pokeapi.co/api/v2/pokemon?offset=${offset.value}&limit=${limit.value}`
 );
+//pokemon?limit=100000&offset=0
+
 const hasPrev = computed(() => page.value > 0);
 const maxPage = computed(() => Math.floor(pokemons.value.count / limit.value));
 const hasNext = computed(() => page.value < maxPage.value);
+
 const onPrev = async () => {
   page.value--;
   await refresh();
 };
+
 const onNext = async () => {
   page.value++;
   await refresh();
 };
+
 const onCatch = async (pokemon) => {
   const response = await fetch(
     `${config.backendOrigin}/api/trainer/${route.params.name}/pokemon/${pokemon.name}`,
@@ -30,6 +36,7 @@ const onCatch = async (pokemon) => {
   if (!response.ok) return;
   router.push(`/trainer/${route.params.name}`);
 };
+
 const { dialog, onOpen, onClose } = useDialog();
 </script>
 
@@ -44,6 +51,7 @@ const { dialog, onOpen, onClose } = useDialog();
     <GamifyList>
       <GamifyItem v-for="pokemon in pokemons.results" :key="pokemon.url">
         <span class="pokemon-name">{{ pokemon.name }}</span>
+        
         
         <GamifyButton @click="onOpen(pokemon)">つかまえる</GamifyButton>
       </GamifyItem>
